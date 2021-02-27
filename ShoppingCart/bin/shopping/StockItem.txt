@@ -1,0 +1,6 @@
+Bread Packet,30,0;
+Amul  Butter,40,0;
+Cheese  Pack,50,0;
+Fruit   Cake,200,0;
+Oreo Biscuit,10,0;
+Dairy   Milk,40,0
