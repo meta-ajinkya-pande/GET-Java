@@ -26,7 +26,7 @@ public class Storage {
 		// reading StockItem.txt file for adding items in storage
 		try {
 			File myObj = new File(
-					"D:\\GET\\ShoppingCart\\src\\shopping\\StockItem.txt");
+					"D:\\GET\\GET-Java\\ShoppingCart\\src\\shopping\\StockItem.txt");
 			Scanner myReader = new Scanner(myObj);
 			String data = "";
 			while (myReader.hasNextLine()) {
