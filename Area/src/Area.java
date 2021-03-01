@@ -70,7 +70,7 @@ public class Area {
 	 */
 	private double areaCircle(double radius) {
 		try {
-			area = 3.14 * radius * radius;
+			area = Math.PI * radius * radius;
 		} catch (Exception e) {
 			System.out.print(e);
 		}

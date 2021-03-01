@@ -45,6 +45,7 @@ public class StringOperation {
 			s += str.charAt(i);
 		}
 		str = s;
+		
 		displayString();
 	}
 
