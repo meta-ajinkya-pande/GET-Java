@@ -87,9 +87,9 @@ public class IntSet {
 	
 	//get compliment
 	private void getComplement(){
-		int []arr=new int[10];
+		int []arr=new int[100];
 		int j=0,flag=0,k;
-		for(int i=0;i<10;i++){
+		for(int i=0;i<100;i++){
 			flag=0;
 			for(k=0;k<set.length;k++){
 				if(i==set[k]){
@@ -102,7 +102,7 @@ public class IntSet {
 		}
 		System.out.println("\nCompliment of set-3 (U=1-10):");
 		for(int i=0;i<j;i++){
-			System.out.println(arr[i]+" ");
+			System.out.print(arr[i]+", ");
 		}
 		
 	}

@@ -88,7 +88,7 @@ public class HexCalculator {
 	// conditional operations
 	private boolean checkEquals() {
 		boolean res = false;
-		int compare = n1.compareTo(n2);
+		int compare = n1.compareToIgnoreCase(n2);
 		if (compare == 0) {
 			res = true;
 		}
@@ -97,7 +97,7 @@ public class HexCalculator {
 
 	private boolean checkGreater() {
 		boolean res = false;
-		int compare = n1.compareTo(n2);
+		int compare = n1.compareToIgnoreCase(n2);
 		if (compare > 0) {
 			res = true;
 		}
@@ -106,7 +106,7 @@ public class HexCalculator {
 
 	private boolean checkSmaller() {
 		boolean res = false;
-		int compare = n1.compareTo(n2);
+		int compare = n1.compareToIgnoreCase(n2);
 		if (compare < 0) {
 			res = true;
 		}
