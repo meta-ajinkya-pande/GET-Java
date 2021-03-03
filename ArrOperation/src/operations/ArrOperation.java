@@ -7,6 +7,18 @@ public class ArrOperation {
 	int[] arr;
 	int noOfItems;
 
+	public static boolean checkArray(int[] arr) {
+		boolean correct = true;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] < 0) {
+				correct = false;
+				break;
+			}
+		}
+
+		return correct;
+	}
+
 	public void init() {
 		System.out.println("Enter number of elements: ");
 		noOfItems = in.nextInt();
@@ -20,50 +32,41 @@ public class ArrOperation {
 	// display array
 	public void displayArray(int arr[]) {
 		System.out.println("Array elements: ");
-		for (int i = 0; i < noOfItems; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			System.out.println(arr[i]);
 		}
 	}
 
 	// largest mirror
 	public int largestMirror(int[] arr) {
-		noOfItems = arr.length;
-		int len = arr.length;
-		if (len == 0)
-			return 0;
-		int maxCount = 1;
-		boolean flag = false;
-
-		for (int i = 0; i < len; i++) {
-			int tempCount = 1;
-			int count = i;
-
-			for (int j = len - 1; j >= 0; j--) {
-				if (arr[count] == arr[j]) {
-					if (flag) {
-						tempCount++;
-						maxCount = Math.max(tempCount, maxCount);
-					}
-					flag = true;
+		if (arr.length == 0) {
+			throw new AssertionError("Array is empty");
+		}
+		int max = 0;
+		for (int i = 0; i < arr.length; i++) {
+			int count = 0;
+			for (int j = arr.length - 1; j >= 0 && i + count < arr.length; j--) {
+				if (arr[i + count] == arr[j]) {
 					count++;
-					if (count >= len)
-						break;
-				} else if (arr[i] != arr[j] && flag) {
-					flag = false;
-					count = i;
-					tempCount = 1;
-				} else if (j == count || j == (count + 1)) {
-					flag = false;
-					break;
+				} else {
+					max = Math.max(max, count);
+					count = 0;
 				}
 			}
+
+			max = Math.max(max, count);
 		}
-		return maxCount;
+
+		return max;
 	}
 
 	// number of clumps
 	public int noOfClumps(int[] arr) {
+		if (arr.length == 0) {
+			throw new AssertionError("Array is empty");
+		}
 		noOfItems = arr.length;
+
 		int clumps = 0, count = 1;
 		for (int i = 0; i < noOfItems - 1; i++) {
 			if (arr[i + 1] == arr[i]) {
@@ -85,10 +88,19 @@ public class ArrOperation {
 	public int[] fitXY(int[] arr, int x, int y) {
 		noOfItems = arr.length;
 		int countX = 0, countY = 0, len = arr.length;
-
-		if (arr.length == 0 || x == arr[noOfItems - 1]) {
-			int emptyArr[] = new int[0];
-			return emptyArr;
+		// array empty
+		if (arr.length == 0) {
+			throw new AssertionError("Array is empty");
+		}
+		// X at last
+		if (arr[(noOfItems - 1)] == x) {
+			throw new AssertionError("X is at last position");
+		}
+		// repeated x
+		for (int i = 0; i < len - 1; i++) {
+			if (arr[i] == x && arr[i + 1] == x) {
+				throw new AssertionError("Adjacent X values present");
+			}
 		}
 
 		for (int i = 0; i < len; i++) {
@@ -98,6 +110,10 @@ public class ArrOperation {
 			if (arr[i] == y) {
 				countY++;
 			}
+		}
+		if (countY < countX) {
+			throw new AssertionError(
+					"X and Y count not equal or count of X is less than Y");
 		}
 		int[] indexX = new int[countX];
 		int[] indexY = new int[countY];
@@ -122,6 +138,9 @@ public class ArrOperation {
 
 	// split equal array
 	public int splitEqual(int[] arr) {
+		if (arr.length == 0) {
+			throw new AssertionError("Array is empty");
+		}
 		noOfItems = arr.length;
 		int index = -1, sumLeft = 0, sumRight = 0, i = 0, j = noOfItems - 1, k = 0;
 
@@ -165,26 +184,29 @@ public class ArrOperation {
 		obj.init();
 		obj.displayArray(obj.arr);
 		Scanner in = new Scanner(System.in);
-		// split array
-		System.out.println("\nSplit array at: ");
-		System.out.print(obj.splitEqual(obj.arr));
 
-		// clumps in array
-		System.out.println("\nTotal clumps: ");
-		System.out.print(obj.noOfClumps(obj.arr));
+		if (checkArray(obj.arr) == true) {
+			// split array
+			System.out.println("\nSplit array at: ");
+			System.out.print(obj.splitEqual(obj.arr));
 
-		// largest mirror
-		System.out.println("\nLargest Mirror: ");
-		System.out.print(obj.largestMirror(obj.arr));
+			// clumps in array
+			System.out.println("\nTotal clumps: ");
+			System.out.print(obj.noOfClumps(obj.arr));
 
-		// fitXY
-		System.out.println("\nFitting XY: ");
-		System.out.println("\nEnter X and Y: ");
-		obj.displayArray(obj.fitXY(obj.arr, in.nextInt(), in.nextInt()));
-		System.out.println("\nAfter fitting XY: ");
-		obj.displayArray(obj.arr);
+			// largest mirror
+			System.out.println("\nLargest Mirror: ");
+			System.out.print(obj.largestMirror(obj.arr));
 
+			// fitXY
+			System.out.println("\n\nFitting XY: ");
+			System.out.println("Enter X and Y: ");
+			int[] array = obj.fitXY(obj.arr, in.nextInt(), in.nextInt());
+			System.out.println("\nAfter fitting XY: ");
+			obj.displayArray(array);
+		} else {
+			System.out.println("\nInput array contains negative integers !");
+		}
 		in.close();
 	}
-
 }

@@ -19,6 +19,13 @@ public class TestCountClumps {
 	}
 
 	@Test
+	public void test_NegativeElementsInArray() {
+		int[] arr = { 1, -1, 2, 3 };
+		boolean output = ArrOperation.checkArray(arr);
+		assertEquals(false, output);
+	}
+
+	@Test
 	public void test_When_arrayHasOneElement() {
 		int[] arr = { 1 };
 		int output = test.noOfClumps(arr);
@@ -53,7 +60,7 @@ public class TestCountClumps {
 			int output = test.noOfClumps(arr);
 			assertEquals(0, output);
 		} catch (AssertionError e) {
-			e.getMessage();
+			assertEquals("Array is empty", e.getMessage());
 		}
 	}
 

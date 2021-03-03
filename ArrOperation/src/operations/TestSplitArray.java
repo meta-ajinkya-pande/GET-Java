@@ -1,6 +1,7 @@
 package operations;
 
 import static org.junit.Assert.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +17,13 @@ public class TestSplitArray {
 
 	@After
 	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void test_NegativeElementsInArray() {
+		int[] arr = { 1, -1, 2, 3 };
+		boolean output = ArrOperation.checkArray(arr);
+		assertEquals(false, output);
 	}
 
 	@Test
@@ -43,6 +51,17 @@ public class TestSplitArray {
 	public void negativeTestForSplitArray() {
 		int arr[] = { 1, 2, 3, 6 };
 		assertFalse(1 == test.splitEqual(arr));
+	}
+
+	@Test
+	public void arrayIsEmpty_Expected_AssertionError() {
+		try {
+			int arr[] = {};
+			int output = test.noOfClumps(arr);
+			assertEquals(0, output);
+		} catch (AssertionError e) {
+			assertEquals("Array is empty", e.getMessage());
+		}
 	}
 
 }
