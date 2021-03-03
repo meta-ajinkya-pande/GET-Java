@@ -15,7 +15,6 @@ public class ArrOperation {
 				break;
 			}
 		}
-
 		return correct;
 	}
 
@@ -85,7 +84,7 @@ public class ArrOperation {
 	}
 
 	// fit XY
-	public int[] fitXY(int[] arr, int x, int y) {
+	public int[] fitXY(int[] arr, int x, int y) throws Exception {
 		noOfItems = arr.length;
 		int countX = 0, countY = 0, len = arr.length;
 		// array empty
@@ -94,12 +93,12 @@ public class ArrOperation {
 		}
 		// X at last
 		if (arr[(noOfItems - 1)] == x) {
-			throw new AssertionError("X is at last position");
+			throw new Exception("X is at last position");
 		}
 		// repeated x
 		for (int i = 0; i < len - 1; i++) {
 			if (arr[i] == x && arr[i + 1] == x) {
-				throw new AssertionError("Adjacent X values present");
+				throw new Exception("Adjacent X values present");
 			}
 		}
 
@@ -201,9 +200,14 @@ public class ArrOperation {
 			// fitXY
 			System.out.println("\n\nFitting XY: ");
 			System.out.println("Enter X and Y: ");
-			int[] array = obj.fitXY(obj.arr, in.nextInt(), in.nextInt());
-			System.out.println("\nAfter fitting XY: ");
-			obj.displayArray(array);
+			try {
+				int[] array = obj.fitXY(obj.arr, in.nextInt(), in.nextInt());
+				System.out.println("\nAfter fitting XY: ");
+				obj.displayArray(array);
+			} catch (Exception e) {
+				System.out.println("\n" + e.getMessage());
+			}
+
 		} else {
 			System.out.println("\nInput array contains negative integers !");
 		}
