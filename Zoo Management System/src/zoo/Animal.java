@@ -1,17 +1,15 @@
 package zoo;
 
-public class Animal {
-	
-	String name;
-	int age;
-	float weight;
+public abstract class Animal {
 
-	public Animal() {
-		
-	}
-	
-	public String getSound(){
-		String sound="";
-		return sound;
-	}
+	public String name;
+	public String animalType;
+	public String sound;
+	public int age;
+	public Double weight;
+	public String habitation;
+	public String uniqueIdForAnimal;
+
+	public abstract String getAnimalSound();
+
 }

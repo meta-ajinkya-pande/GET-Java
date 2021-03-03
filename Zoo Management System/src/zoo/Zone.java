@@ -1,23 +1,51 @@
 package zoo;
 
-public class Zone extends Animal{
+import java.util.LinkedList;
+import java.util.List;
 
-	int maxCagesInZone = 2;
+/*
+ * class for zone allocation
+ * 
+ */
+public class Zone {
 
-	public Zone() {
-		// TODO Auto-generated constructor stub
+	final private CategoryEnum zoneType;
+	final int uniqueZoneId;
+	private boolean hasPark, hasCanteen;
+	private List<Cage> cages = new LinkedList<Cage>(); // list containing cages
+														// in a particular zone
+	int MaxCageContaininingCapacity;
+
+	public Zone(CategoryEnum zoneType, int MaxCageContaininingCapacity,
+			boolean park, boolean canteen, int uniqueZoneId) {
+		this.zoneType = zoneType;
+		this.MaxCageContaininingCapacity = MaxCageContaininingCapacity;
+		this.uniqueZoneId = uniqueZoneId;
+		this.hasPark = park;
+		this.hasCanteen = canteen;
 	}
 
-	// has park
-	public int hasPark() {
-		int flag = 0;
+	// method used to return the zone type
+	public CategoryEnum getZoneTypeName() {
+		return zoneType;
+	}
+
+	// method returns already present cages count in a particular zone
+	public int getCountOfCagesPresent() {
+		return this.cages.size();
+	}
+
+	// method return list of cages
+	public List<Cage> getCageList() {
+		return cages;
+	}
+
+	// method to check if space is available in zone to add more cages
+	public boolean isSpaceAvailable() {
+		boolean flag = true;
+		if (cages.size() == MaxCageContaininingCapacity) {
+			flag = false;
+		}
 		return flag;
 	}
-
-	// has canteen
-	public int hasCanteen() {
-		int flag = 0;
-		return flag;
-	}
-
 }
