@@ -14,34 +14,12 @@ public class Zoo {
 	private int uidZone = 1, uidCage = 1;
 	private boolean zoneFlag = false, cageFlag = false;
 
-	Map<Integer, Zone> zoneMap = new LinkedHashMap<Integer, Zone>(); // map
-																		// containing
-																		// information
-																		// of
-																		// all
-																		// zones
-																		// in
-																		// zoo
-	Map<Integer, Cage> cageMap = new LinkedHashMap<Integer, Cage>(); // map
-																		// containing
-																		// information
-																		// of
-																		// cages
-																		// present
-																		// in
-																		// zone
-																		// of
-																		// the
-																		// zoo
-	Map<String, Animal> animalMap = new LinkedHashMap<String, Animal>(); // map
-																			// containing
-																			// information
-																			// of
-																			// the
-																			// animals
-																			// present
-																			// in
-																			// zoo
+	/* map containing information of all zones in zoo */
+	Map<Integer, Zone> zoneMap = new LinkedHashMap<Integer, Zone>();
+	/* map containing information of all cages in zoo */
+	Map<Integer, Cage> cageMap = new LinkedHashMap<Integer, Cage>();
+	/* map containing information of all animals in zoo */
+	Map<String, Animal> animalMap = new LinkedHashMap<String, Animal>();
 
 	private Scanner scanner = new Scanner(System.in);
 

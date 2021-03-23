@@ -22,34 +22,35 @@ public class ZooManagementMain {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		// call method for menu
-		MainPage();
-		Zoo zoo = new Zoo();
 
-		int choosedInput = scan.nextInt();
-		switch (choosedInput) {
-		case 1:
-			zoo.getAnimalDetails();
-			break;
-		case 2:
-			zoo.addCage();
-			break;
-		case 3:
-			int status = zoo.addZone();
-			if (status == 0)
-				MainPage();
-			break;
-		case 4:
-			zoo.removeAnimal();
-			break;
-		case 5:
-			System.out.println("Okay bye !");
-			System.exit(0);
-		default:
-			System.out.println("Invalid input !");
-			System.exit(0);
+		Zoo zoo = new Zoo();
+//		MainPage();
+
+		while (true) {
+			MainPage();
+			int choosedInput = scan.nextInt();
+			switch (choosedInput) {
+			case 1:
+				zoo.getAnimalDetails();
+				break;
+			case 2:
+				zoo.addCage();
+				break;
+			case 3:
+				int status = zoo.addZone();
+				if (status == 0)
+					MainPage();
+				break;
+			case 4:
+				zoo.removeAnimal();
+				break;
+			case 5:
+				System.out.println("Okay bye !");
+				System.exit(0);
+			default:
+				System.out.println("Invalid input !");
+			}
 		}
-		MainPage();
 
 	}
-
 }

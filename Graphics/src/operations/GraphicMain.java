@@ -16,7 +16,7 @@ public class GraphicMain {
 		while (operationChoice < 7) {
 			Shape shape = null;
 			System.out
-					.println("\n\n\nSelect the operation you want to perform:");
+					.println("\nSelect the operation you want to perform:");
 
 			System.out
 					.println("1. Add shape to screen\n"
@@ -58,6 +58,7 @@ public class GraphicMain {
 
 				Point point = new Point(originX, originY);
 				parametersList.removeAll(parametersList);
+				
 				switch (shapeSelected) {
 				case RECTANGLE:
 					System.out.println("Enter the length: ");

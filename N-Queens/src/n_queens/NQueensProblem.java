@@ -80,7 +80,7 @@ public class NQueensProblem {
 			 * Check if queen can be placed on board[i][col]
 			 */
 			if (isSafe(board, i, col)) {
-				/* Place this queen in board[i][col] */
+				/* Place this queen in board[i][clo] */
 				board[i][col] = 1;
 
 				// Make result true if any placement
@@ -128,7 +128,7 @@ public class NQueensProblem {
 			System.out.println("Enter the dimension of N Queen problem : ");
 			dimensionOfMatrix = input.nextInt();
 			if (dimensionOfMatrix > NQueensProblem.MAX) {
-				System.out.println("Exceed max value(8)!! ");
+				System.out.println("Exceed max value(8)!");
 			}
 			flag = false;
 		} while (flag);

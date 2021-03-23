@@ -128,8 +128,8 @@ public class Screen {
 	 */
 	public List<Shape> getListOfOverlapShape(String uniqueId) {
 		List<Shape> resultList = new ArrayList<Shape>();
-		Shape startShape = null; // shape from which we have to check
-									// overlapping
+		// shape from which we have to check overlapping
+		Shape startShape = null; 
 
 		for (String key : mapOfShapeOnScreen.keySet()) {
 			if (key.equals(uniqueId)) {
@@ -147,7 +147,7 @@ public class Screen {
 	}
 
 	/*
-	 * method shows the shapes pesent on the screen
+	 * method shows the shapes present on the screen
 	 */
 	private void showShapesOnScreen() {
 		for (Shape shape : mapOfShapeOnScreen.values()) {

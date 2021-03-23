@@ -65,13 +65,12 @@ public class Circle implements Shape {
 		m = Math.sqrt((xCoordinate * xCoordinate) + (yCoordinate * yCoordinate))
 				+ radius;
 		centreX = (m * xCoordinate) / (m - n);
-		centreX = (m * yCoordinate) / (m - n);
-
+		centreY = (m * yCoordinate) / (m - n);
 		// calculate distance of centre from the point given
 		double distanceToPoint = (double) Math
 				.sqrt(((x - centreX) * (x - centreX))
 						+ ((y - centreY) * (y - centreY)));
-
+		
 		if (distanceToPoint < radius) {
 			return true;
 		}
